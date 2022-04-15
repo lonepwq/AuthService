@@ -1,8 +1,8 @@
 package com.pwq.common.exception;
 
-import com.pwq.common.constant.CommonErrorCodeEnum;
-import com.pwq.common.constant.ErrorCodeEnum;
-import com.pwq.model.vo.RestResponse;
+import com.pwq.common.constant.enums.CommonResponseCodeEnum;
+import com.pwq.common.constant.enums.ResponseCodeEnum;
+import com.pwq.model.RestResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,15 +25,15 @@ public class GlobalExceptionHandler {
             log.info(e.getMessage(), e);
             //解析系统自定义异常
             BusinessException businessException = (BusinessException) e;
-            ErrorCodeEnum errorCodeEnum = businessException.getErrorCodeEnum();
+            ResponseCodeEnum responseCodeEnum = businessException.getResponseCodeEnum();
             //错误代码
-            int code = errorCodeEnum.getCode();
+            int code = responseCodeEnum.getCode();
             //错误信息
-            String message = errorCodeEnum.getMessage();
+            String message = responseCodeEnum.getMessage();
             return new RestResponse(code, message);
         }
         //非自定义异常类型，定义为99999系统未知错误
         log.error("系统异常:", e);
-        return new RestResponse(CommonErrorCodeEnum.UNKNOWN.getCode(), CommonErrorCodeEnum.UNKNOWN.getMessage());
+        return new RestResponse(CommonResponseCodeEnum.UNKNOWN.getCode(), CommonResponseCodeEnum.UNKNOWN.getMessage());
     }
 }

@@ -73,7 +73,11 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.80</version>
         </dependency>
+        <!-- Swagger 3 API接口调试工具 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
+        </dependency>
     </dependencies>
-
-
 </project>

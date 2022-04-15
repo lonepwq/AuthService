@@ -1,12 +1,12 @@
 package com.pwq.service;
 
-public interface CommonService<T> {
+public interface CommonService<E> {
 
-    T create(T t);
+    E create(E entity);
 
-    T retrieveById(Integer id);
+    E retrieveById(Integer id);
 
-    T update(T t);
+    E update(E entity);
 
-    void delete(T t);
+    void delete(E entity);
 }

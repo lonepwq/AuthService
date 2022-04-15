@@ -1,9 +1,9 @@
-package com.pwq.common.constant;
+package com.pwq.common.constant.enums;
 
 /**
  * 公用异常编码
  */
-public enum CommonErrorCodeEnum implements ErrorCodeEnum {
+public enum CommonResponseCodeEnum implements ResponseCodeEnum {
 
     E_100101(100101, "传入参数与接口不匹配"),
 
@@ -50,13 +50,13 @@ public enum CommonErrorCodeEnum implements ErrorCodeEnum {
      * 1、前端调用接口接收到的http状态码都是200；
      * 2、然后解析内容只要不是成功的状态码。都弹窗提示用户；
      */
-    SUCCESS(000000, "成功");
+    SUCCESS(0, "成功");
 
-    private int code;
+    private Integer code;
     private String message;
 
     @Override
-    public int getCode() {
+    public Integer getCode() {
         return code;
     }
 
@@ -65,7 +65,7 @@ public enum CommonErrorCodeEnum implements ErrorCodeEnum {
         return message;
     }
 
-    CommonErrorCodeEnum(int code, String message) {
+    CommonResponseCodeEnum(int code, String message) {
         this.code = code;
         this.message = message;
     }
